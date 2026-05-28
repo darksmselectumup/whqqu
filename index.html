@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>KAPI TRAFIK</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Inter',sans-serif;
+background:
+radial-gradient(circle at top left,#1a1a1a 0%,#050505 45%,#000000 100%);
+color:white;
+overflow-x:hidden;
+}
+
+/* BACKGROUND */
+
+.bg-glow{
+position:fixed;
+width:700px;
+height:700px;
+border-radius:50%;
+background:
+radial-gradient(circle,rgba(255,255,255,0.04),transparent 70%);
+filter:blur(90px);
+z-index:-1;
+animation:glowMove 10s infinite alternate ease-in-out;
+}
+
+.bg-glow.one{
+top:-300px;
+left:-300px;
+}
+
+.bg-glow.two{
+bottom:-300px;
+right:-300px;
+}
+
+@keyframes glowMove{
+from{
+transform:translateY(0px);
+}
+to{
+transform:translateY(50px);
+}
+}
+
+/* HERO */
+
+.hero{
+padding:8px 10px 8px;
+display:flex;
+justify-content:center;
+}
+
+.hero-box{
+width:100%;
+max-width:1400px;
+padding:12px;
+border-radius:34px;
+background:rgba(255,255,255,0.03);
+backdrop-filter:blur(24px);
+border:1px solid rgba(255,255,255,0.08);
+overflow:hidden;
+position:relative;
+box-shadow:
+0 25px 80px rgba(0,0,0,0.8),
+inset 0 0 35px rgba(255,255,255,0.02);
+}
+
+.hero-video{
+width:100%;
+border-radius:28px;
+overflow:hidden;
+background:#000;
+border:1px solid rgba(255,255,255,0.08);
+box-shadow:
+0 25px 70px rgba(0,0,0,0.85);
+}
+
+.hero-video video{
+width:100%;
+height:260px;
+display:block;
+object-fit:cover;
+}
+
+/* SECTION */
+
+.section{
+padding:55px 14px;
+}
+
+.container{
+max-width:1300px;
+margin:auto;
+}
+
+/* TITLES */
+
+.section-title{
+text-align:center;
+margin-bottom:45px;
+}
+
+.section-title h2{
+font-size:46px;
+font-weight:900;
+letter-spacing:4px;
+}
+
+.section-title p{
+margin-top:12px;
+font-size:15px;
+color:#8c8c8c;
+}
+
+/* CATEGORY */
+
+.categories{
+display:flex;
+flex-direction:column;
+gap:24px;
+}
+
+.category{
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(255,255,255,0.08);
+border-radius:28px;
+overflow:hidden;
+backdrop-filter:blur(20px);
+box-shadow:
+0 20px 50px rgba(0,0,0,0.55);
+transition:0.4s;
+}
+
+.category:hover{
+transform:translateY(-4px);
+}
+
+.category summary{
+list-style:none;
+padding:24px;
+font-size:22px;
+font-weight:800;
+cursor:pointer;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.category summary::-webkit-details-marker{
+display:none;
+}
+
+.arrow{
+transition:0.4s;
+}
+
+.category[open] .arrow{
+transform:rotate(180deg);
+}
+
+.category-content{
+padding:0 20px 24px;
+}
+
+/* SUB BOX */
+
+.sub-box{
+margin-top:20px;
+padding:22px;
+border-radius:24px;
+background:rgba(0,0,0,0.35);
+border:1px solid rgba(255,255,255,0.08);
+}
+
+.sub-box h3{
+font-size:22px;
+margin-bottom:14px;
+}
+
+.sub-box p{
+font-size:15px;
+line-height:1.8;
+color:#d5d5d5;
+}
+
+/* IMAGE */
+
+.bot-image{
+width:100%;
+border-radius:22px;
+margin-bottom:18px;
+display:block;
+border:1px solid rgba(255,255,255,0.08);
+}
+
+/* PRICE */
+
+.price{
+display:inline-block;
+margin-top:18px;
+padding:12px 22px;
+border-radius:16px;
+font-size:14px;
+font-weight:800;
+background:
+linear-gradient(135deg,#ffffff,#9d9d9d);
+color:black;
+}
+
+/* BUTTON */
+
+.buy-btn{
+margin-top:22px;
+display:inline-flex;
+align-items:center;
+justify-content:center;
+padding:16px 28px;
+border-radius:18px;
+text-decoration:none;
+font-weight:700;
+color:white;
+background:rgba(255,255,255,0.06);
+border:1px solid rgba(255,255,255,0.12);
+backdrop-filter:blur(15px);
+transition:0.4s;
+overflow:hidden;
+position:relative;
+}
+
+.buy-btn::before{
+content:'';
+position:absolute;
+inset:0;
+background:
+linear-gradient(
+120deg,
+transparent,
+rgba(255,255,255,0.15),
+transparent
+);
+transform:translateX(-100%);
+}
+
+.buy-btn:hover::before{
+animation:btnshine 1s forwards;
+}
+
+.buy-btn:hover{
+transform:translateY(-4px);
+background:rgba(255,255,255,0.12);
+}
+
+@keyframes btnshine{
+100%{
+transform:translateX(200%);
+}
+}
+
+/* CONTACTS */
+
+.contacts{
+display:grid;
+grid-template-columns:1fr;
+gap:22px;
+}
+
+.contact-btn{
+position:relative;
+overflow:hidden;
+min-height:110px;
+border-radius:28px;
+text-decoration:none;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(25px);
+border:1px solid rgba(255,255,255,0.12);
+transition:0.45s;
+box-shadow:
+0 20px 50px rgba(0,0,0,0.6);
+}
+
+.contact-btn:hover{
+transform:translateY(-5px) scale(1.01);
+}
+
+.contact-btn span{
+position:relative;
+z-index:5;
+font-size:18px;
+font-weight:800;
+text-align:center;
+line-height:1.5;
+color:white;
+}
+
+/* LIQUID */
+
+.liquid{
+position:absolute;
+width:180%;
+height:180%;
+background:
+radial-gradient(circle at 30% 30%,rgba(255,255,255,0.18),transparent 20%),
+radial-gradient(circle at 70% 70%,rgba(255,255,255,0.08),transparent 20%),
+linear-gradient(180deg,#000,#1a1a1a,#050505);
+border-radius:40%;
+bottom:-120%;
+left:-40%;
+animation:liquid 8s infinite linear;
+}
+
+.contact-btn:hover .liquid{
+animation-duration:3s;
+}
+
+@keyframes liquid{
+0%{
+transform:rotate(0deg);
+}
+100%{
+transform:rotate(360deg);
+}
+}
+
+/* FOOTER */
+
+.footer{
+padding:40px 20px 70px;
+text-align:center;
+font-size:13px;
+color:#777;
+}
+
+/* DESKTOP */
+
+@media(min-width:769px){
+
+.hero{
+padding:12px 20px 12px;
+}
+
+.hero-box{
+padding:16px;
+}
+
+.hero-video video{
+height:560px;
+}
+
+.section{
+padding:90px 25px;
+}
+
+.section-title h2{
+font-size:74px;
+}
+
+.category summary{
+font-size:32px;
+padding:34px;
+}
+
+.category-content{
+padding:0 34px 34px;
+}
+
+.sub-box{
+padding:30px;
+}
+
+.sub-box h3{
+font-size:30px;
+}
+
+.sub-box p{
+font-size:17px;
+}
+
+.contacts{
+grid-template-columns:
+repeat(auto-fit,minmax(280px,1fr));
+gap:28px;
+}
+
+.contact-btn{
+min-height:140px;
+}
+
+.contact-btn span{
+font-size:22px;
+}
+
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero-video video{
+height:220px;
+}
+
+.section-title h2{
+font-size:52px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="bg-glow one"></div>
+<div class="bg-glow two"></div>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-box">
+
+<div class="hero-video">
+
+<video autoplay muted loop playsinline>
+<source src="intro.mp4" type="video/mp4">
+</video>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- SERVICES -->
+
+<section class="section">
+
+<div class="container">
+
+<div class="section-title">
+<h2>УСЛУГИ</h2>
+<p>Premium Digital Marketplace</p>
+</div>
+
+<div class="categories">
+
+<!-- ACCOUNTS -->
+
+<details class="category">
+
+<summary>
+Аккаунты
+<span class="arrow">⌄</span>
+</summary>
+
+<div class="category-content">
+
+<div class="sub-box">
+
+<h3>Telegram аккаунты</h3>
+
+<p>
+Прогретые аккаунты от 3 месяцев.
+Подходят для рассылок, автоматизации и свободного использования.
+Качество 6/6 звезд.
+</p>
+
+<div class="price">
+2-5$ за аккаунт
+</div>
+
+<br>
+
+<a href="https://t.me/KapiTrafik" class="buy-btn">
+Купить
+</a>
+
+</div>
+
+<div class="sub-box">
+
+<h3>Facebook аккаунты</h3>
+
+<p>
+Прогретые аккаунты для запуска рекламы.
+Полностью готовы к запуску рекламных кабинетов.
+</p>
+
+<a href="https://t.me/KapiTrafik" class="buy-btn">
+Заказать
+</a>
+
+</div>
+
+</div>
+
+</details>
+
+<!-- TELEGRAM -->
+
+<details class="category">
+
+<summary>
+Telegram Automation
+<span class="arrow">⌄</span>
+</summary>
+
+<div class="category-content">
+
+<div class="sub-box">
+
+<img src="sas.png" class="bot-image">
+
+<h3>KapiTraf BOT</h3>
+
+<p>
+
+• Авторассылка<br>
+• Парсер чатов<br>
+• Автоджойнер<br>
+• Проверка чатов<br>
+• Поддержка фото<br>
+• Инструкция по анонимизации
+
+</p>
+
+<div class="price">
+200$
+</div>
+
+<br>
+
+<a href="https://t.me/KapiTrafik" class="buy-btn">
+Купить доступ
+</a>
+
+</div>
+
+</div>
+
+</details>
+
+<!-- DESIGN -->
+
+<details class="category">
+
+<summary>
+Дизайн
+<span class="arrow">⌄</span>
+</summary>
+
+<div class="category-content">
+
+<div class="sub-box">
+
+<h3>AI Creative Design</h3>
+
+<p>
+Создание рекламных креативов
+при помощи premium AI инструментов.
+</p>
+
+<div class="price">
+от 3$
+</div>
+
+<br>
+
+<a href="https://t.me/KapiTrafik" class="buy-btn">
+Заказать
+</a>
+
+</div>
+
+</div>
+
+</details>
+
+<!-- SECURITY -->
+
+<details class="category">
+
+<summary>
+Безопасность
+<span class="arrow">⌄</span>
+</summary>
+
+<div class="category-content">
+
+<div class="sub-box">
+
+<h3>Курс по анонимности</h3>
+
+<p>
+Proxy + TOR для любых приложений.
+Полная анонимность и отсутствие блокировок.
+</p>
+
+<div class="price">
+150$
+</div>
+
+<br>
+
+<a href="https://t.me/KapiTrafik" class="buy-btn">
+Получить
+</a>
+
+</div>
+
+</div>
+
+</details>
+
+<!-- ADS -->
+
+<details class="category">
+
+<summary>
+Реклама
+<span class="arrow">⌄</span>
+</summary>
+
+<div class="category-content">
+
+<div class="sub-box">
+
+<h3>Telegram реклама</h3>
+
+<p>
+1 час — 3$<br>
+3 часа — 5$<br>
+6 часов — 7$<br>
+12 часов — 13$<br>
+24 часа — 20$
+</p>
+
+<a href="https://t.me/KapiTrafik" class="buy-btn">
+Запустить
+</a>
+
+</div>
+
+<div class="sub-box">
+
+<h3>Facebook реклама</h3>
+
+<p>
+Создание креатива — 5$<br>
+1 день рекламы — 40$
+</p>
+
+<a href="https://t.me/KapiTrafik" class="buy-btn">
+Заказать
+</a>
+
+</div>
+
+</div>
+
+</details>
+
+<!-- DEV -->
+
+<details class="category">
+
+<summary>
+Разработка
+<span class="arrow">⌄</span>
+</summary>
+
+<div class="category-content">
+
+<div class="sub-box">
+
+<h3>Сайты и Telegram боты</h3>
+
+<p>
+Разработка под ваши задачи.
+Скидка 30% на первый заказ.
+</p>
+
+<a href="https://t.me/KapiTrafik" class="buy-btn">
+Обсудить проект
+</a>
+
+</div>
+
+</div>
+
+</details>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CONTACTS -->
+
+<section class="section">
+
+<div class="container">
+
+<div class="section-title">
+<h2>КОНТАКТЫ</h2>
+<p>Актуальные ссылки KapiTrafik</p>
+</div>
+
+<div class="contacts">
+
+<a href="https://t.me/+Tboq9O5hbEhlMTgy" class="contact-btn">
+<div class="liquid"></div>
+<span>INFO CHANNEL</span>
+</a>
+
+<a href="https://t.me/+W8MEEjbzPIRiMzFi" class="contact-btn">
+<div class="liquid"></div>
+<span>ОТЗЫВЫ КЛИЕНТОВ</span>
+</a>
+
+<a href="https://t.me/KapiTrafik" class="contact-btn">
+<div class="liquid"></div>
+<span>ОПЕРАТОР ПРОДАЖ</span>
+</a>
+
+<a href="https://t.me/KapiSapport" class="contact-btn">
+<div class="liquid"></div>
+<span>ТЕХ. ПОДДЕРЖКА</span>
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<div class="footer">
+© KAPI TRAFIK — PREMIUM DIGITAL MARKETPLACE
+</div>
+
+</body>
+</html>
